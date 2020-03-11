@@ -1,4 +1,6 @@
 <?php require '../DB/connection.php' ?>
+<?php require '../Include/validation.php' ?>
+<?php require '../Include/auth.php' ?>
 <html>
     <head>
         <title>Radi</title>

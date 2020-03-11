@@ -14,6 +14,9 @@
     
 $sql = "SELECT ID, IMG, TITLE, DESCR FROM products";
 $result = $conn->query($sql);
+
+$sql1 = "SELECT ID_com, USER, EMAIL, COMMENT FROM comments";
+$result1 = $conn->query($sql1);
 ?>
 
 
