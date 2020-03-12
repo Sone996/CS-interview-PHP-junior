@@ -1,8 +1,6 @@
 <?php require '../Components/head.php';?>
 
-
 <div class="card-deck">
-
 <?php 
 $num_cell = 4;
      $count_cell = 0;
@@ -34,12 +32,25 @@ $num_cell = 4;
             echo "0 results";
         }
         $conn->close();
-?>
+        ?>
 </div>
 
+<div class='comments'>
+    <div class="row">
+		<h2>Comments</h2>
+	</div>
+    <?php while($row = $result1->fetch_assoc()) {?>
+	<hr>
+	<div class="row comment">
+	    <div class="col-12">
+	        <small><strong class='user'><?php echo $row['USER'];?></strong> 30.10.2017 12:13</small>
+	    </div>    
+	    <p><?php echo $row['COMMENT'];?> </p>
+    </div>
 
-<div class='comments'></div>
-<div class='submit-com'></div>
+    <?php }?>
+    </div>
 
+<?php require '../Components/add_comment.php';?>
 
 <?php require '../Components/footer.php';?>

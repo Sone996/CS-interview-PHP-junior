@@ -1,6 +1,4 @@
 <?php require '../DB/connection.php' ?>
-<?php require '../Include/validation.php' ?>
-<?php require '../Include/auth.php' ?>
 <html>
     <head>
         <title>Radi</title>
@@ -11,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="../public/js/main.js"></script>
     </head>
     <body>
 
@@ -25,6 +24,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../Pages/admin.php">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Include/logout.php">Logout</a>
                 </li>
             </ul>
         </div>

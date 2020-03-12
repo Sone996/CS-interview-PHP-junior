@@ -4,3 +4,10 @@ ul li a, ul li a{
 .card_style {
     padding-top: 2em;
 }
+.comments, .submit-com {
+    padding-top: 3em;
+}
+#table_for_comments {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
