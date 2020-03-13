@@ -1,4 +1,4 @@
-<?php require '../Components/head.php';?>
+<?php require '../Components/header.php';?>
 <form method="POST" id="login-form">
   <div class="form-group">
     <label>Name</label>
@@ -12,7 +12,4 @@
 </form>
 <?php require '../Components/footer.php';?>
 
-<?php
-  session_start();
-  var_dump($_SESSION);
-?>
+<?php session_start();?>

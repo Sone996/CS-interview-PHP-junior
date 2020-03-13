@@ -1,4 +1,4 @@
-<?php require '../Components/head.php';?>
+<?php require '../Components/header.php';?>
 
 <div class="card-deck">
 <?php 
@@ -39,16 +39,18 @@ $num_cell = 4;
     <div class="row">
 		<h2>Comments</h2>
 	</div>
-    <?php while($row = $result1->fetch_assoc()) {?>
+    <?php while($row = $result1->fetch_assoc()) {
+        if($row['STATUS']==1) {
+        ?>
 	<hr>
 	<div class="row comment">
 	    <div class="col-12">
-	        <small><strong class='user'><?php echo $row['USER'];?></strong> 30.10.2017 12:13</small>
+	        <small><strong class='user'><?php echo $row['USER'];?></strong></small>
 	    </div>    
 	    <p><?php echo $row['COMMENT'];?> </p>
     </div>
 
-    <?php }?>
+    <?php } }?>
     </div>
 
 <?php require '../Components/add_comment.php';?>

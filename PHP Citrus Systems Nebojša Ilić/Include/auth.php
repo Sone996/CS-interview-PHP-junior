@@ -15,12 +15,6 @@ function Login() {
     }
 } 
 
-// function Confirm_Login() {      // Proverava da li je admin logovan
-//     if (!Login()) {
-//        header ("Location: ../Pages/admin.php");
-//     }
-// }
-
 function Login_Attempt($UserName, $Password) {
     $dns = 'localhost';
     $uname = 'root';

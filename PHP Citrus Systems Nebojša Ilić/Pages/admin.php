@@ -1,4 +1,4 @@
-<?php require '../Components/head.php';?>
+<?php require '../Components/header.php';?>
 <?php require '../Include/auth.php' ?>
 <?php require '../DB/connection.php' ?>
 <?php
@@ -10,8 +10,9 @@ if (
     return;
 }
 
-echo $_SESSION['ID_admin'];
+// echo $_SESSION['ID_admin'];
 ?>
+<h3>Comments awaiting validation</h3>
 <table class="table" id="table_for_comment" style="margin-top: 3em; margin-bottom: 3em">
   <thead class="thead-dark">
     <tr>
@@ -24,30 +25,18 @@ echo $_SESSION['ID_admin'];
     </tr>
   </thead>
   <tbody>
+  <?php while($row = $result1->fetch_assoc()) {
+    if($row['STATUS']==0) {
+    ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
+      <th scope="row"><?php echo $row["ID_com"];?></th>
+      <td><?php echo $row["USER"];?></td>
+      <td><?php echo $row["MAIL"];?></td>
       <td>@mdo</td>
       <th scope="col"><button type="button" class="btn btn-success">Approve</button></th>
       <th scope="col"><button type="button" class="btn btn-danger">Delete</button></th>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <th scope="col"><button type="button" class="btn btn-success">Approve</button></th>
-      <th scope="col"><button type="button" class="btn btn-danger">Delete</button></th>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <th scope="col"><button type="button" class="btn btn-success">Approve</button></th>
-      <th scope="col"><button type="button" class="btn btn-danger">Delete</button></th>
-    </tr>
+  <?php } } ?>
   </tbody>
 </table>
 <?php require '../Components/footer.php';?>
