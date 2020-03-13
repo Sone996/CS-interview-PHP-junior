@@ -32,7 +32,7 @@ if (
       <th scope="row"><?php echo $row["ID_com"];?></th>
       <td><?php echo $row["USER"];?></td>
       <td><?php echo $row["MAIL"];?></td>
-      <td>@mdo</td>
+      <td><?php echo $row["COMMENT"];?></td>
       <th scope="col"><input class="button btn btn-primary" type="submit" name="approve" value="Approve"></th>
       <th scope="col"><input class="button btn btn-danger" type="submit" name="delete" value="Delete"></th>
     </tr>
@@ -41,37 +41,47 @@ if (
 </table>
 <?php require '../Components/footer.php';?>
 
+<?php 
+if(isset($_POST["approve"])){
+  approve();
+}
+if(isset($_POST["approve"])){
+  delete();
+}
+?>
 
 <?php 
 function delete(){
   $conn = new mysqli('localhost', 'root', '', "shop");
   $id = $_POST['ID_comm'];
-  $sqld = "DELETE FROM comments WHERE ID_com= $id";
-  $Execute = mysqli_query($conn, $sqlad);
-  header('Location: admin.php');
+  $sqld = "DELETE * FROM comments WHERE ID_com= $id";
+  $Execute = mysqli_query($conn, $sqld);
+  // header('Location: admin.php');
 }
 function approve(){
   $conn = new mysqli('localhost', 'root', '', "shop");
   $id = $_POST['ID_comm'];
   $sqla = "UPDATE comments SET STATUS_com='1' WHERE ID_com= $id";
   $Execute = mysqli_query($conn, $sqla);
-  header('Location: admin.php');
+  // header('Location: admin.php');
   return $result;
 }
 ?>
 
 
-<script>
-$(document).ready(function () {
-    $('.button').click(function () {
-        var clickBtnValue = $(this).val();
-        var ajaxurl = 'admin.php',
-            data = { 'action': clickBtnValue };
-        $.post(ajaxurl, data, function (response) {
-            // Response div goes here.
-            url: 'admin.php/approve()',
-            alert("action performed successfully");
-        });
-    });
-});
-</script>
+<!-- function new_comment(){ 
+      $conn = new mysqli('localhost', 'root', '', "shop");
+      $name = $_POST['name'];
+      $mail = $_POST['mail'];
+      $comment = $_POST['comment'];
+      $status = 0;
+      if (!empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['comment'])) {
+        $sqlf = "INSERT INTO comments SET USER='$name', MAIL='$mail', COMMENT='$comment', STATUS_com='$status'";
+        // $result = $conn->query($sqlf);
+        $Execute = mysqli_query($conn, $sqlf);
+        // header('Location: main.php');
+        // return $result;
+      } else {
+        echo '<div class="alert alert-warning" role="alert">Please fill all fields!</div>';
+      }
+} -->

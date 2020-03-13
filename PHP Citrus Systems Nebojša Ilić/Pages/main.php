@@ -12,7 +12,7 @@ $num_cell = 4;
             }
             echo '<div class="col-4 card_style">
                     <div class="card">
-                        <img class="card-img-top" src="../Img/img.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../Img/img.jpg" alt="image">
                     <div class="card-body">
                         <h5 class="card-title"> '. $row["TITLE"] .'</h5>
                          <p class="card-text"> '. $row["DESCR"] .'</p>
@@ -55,3 +55,5 @@ $num_cell = 4;
 <?php require '../Components/add_comment.php';?>
 
 <?php require '../Components/footer.php';?>
+
+<!-- <img class="card-img-top" src="../Img/img.jpg" alt="Card image cap"> -->

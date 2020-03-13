@@ -1,10 +1,10 @@
 <?php require '../Include/validation.php';?>
 <?php require '../DB/connection.php';?>
 <div class='submit-com'>
-<form action="new_comment()" method="POST" autocomplete="off">
+<form action="" method="POST" autocomplete="off">
   <div class="form-group">
     <label for="user">Your name</label>
-    <input name="user" type="text" class="form-control" id="NAME" placeholder="name">
+    <input name="name" type="text" class="form-control" id="name" placeholder="name">
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
@@ -15,38 +15,27 @@
     <textarea name="comment" class="form-control" id="comment" rows="3" required=''></textarea>
   </div>
   <!-- <button type="button" class="btn btn-primary" name="submit">Commit</button> -->
-  <input id="submit" class="btn btn-primary" type="submit" value="Commit">
+  <input name="add" class="btn btn-primary" type="submit" value="Commit">
 </form>
 </div>
 
 
 <?php 
-// function sub_com(){
-//         $user = $_POST['NAME'];
-//         $email = $_POST['MAIL'];
-//         $comment = $_POST['COMMENT'];
-//         if (!empty($_POST['NAME']) && !empty($_POST['MAIL']) && !empty($_POST['COMMENT'])) {
-//             if (preg_match('/[^A-Za-z]/', $data['NAME']) || preg_match('/[^A-Za-z]/',
-//                             $data['MAIL'])) {
-//                 echo 'Dont use white speces or special characters in name or email!';
-//                 http_response_code(400);
-//             } else {
-//               echo 'Invalid data in name or email!';
-//             } 
-//               echo "SUCCESS";
-            
-//       }
-//     header('location: ../main.php');
-//   }
+if(isset($_POST["add"])){
+  new_comment();
+}
 
-
-  function new_comment($name, $mail, $comment){
-        $name = $_POST['NAME'];
-        $mail = $_POST['MAIL'];
-        $comment = $_POST['COMMENT'];
-        $sqlf = "INSERT INTO comments SET USER='$name', MAIL='$mail', COMMENT='$comment', STATUS_com='0'";
-        $result = $conn->query($sqlf);
-        header('Location: main.php');
-        return $result;
+function new_comment(){ 
+      $conn = new mysqli('localhost', 'root', '', "shop");
+      $name = $_POST['name'];
+      $mail = $_POST['mail'];
+      $comment = $_POST['comment'];
+      $status = 0;
+      if (!empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['comment'])) {
+        $sqlf = "INSERT INTO comments SET USER='$name', MAIL='$mail', COMMENT='$comment', STATUS_com='$status'";
+        $Execute = mysqli_query($conn, $sqlf);
+      } else {
+        echo '<div class="alert alert-warning" role="alert">Please fill all fields!</div>';
+      }
 }
 ?>
