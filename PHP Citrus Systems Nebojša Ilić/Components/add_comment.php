@@ -14,7 +14,6 @@
     <label for="comment">Add your comment</label>
     <textarea name="comment" class="form-control" id="comment" rows="3" required=''></textarea>
   </div>
-  <!-- <button type="button" class="btn btn-primary" name="submit">Commit</button> -->
   <input name="add" class="btn btn-primary" type="submit" value="Commit">
 </form>
 </div>
