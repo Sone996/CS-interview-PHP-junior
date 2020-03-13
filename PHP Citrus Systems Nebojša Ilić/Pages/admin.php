@@ -46,15 +46,15 @@ if (
 function delete(){
   $conn = new mysqli('localhost', 'root', '', "shop");
   $id = $_POST['ID_comm'];
-  $sqlf = "DELETE FROM comments WHERE ID_com= $id";
-  $result = $conn->query($sqlf);
+  $sqld = "DELETE FROM comments WHERE ID_com= $id";
+  $Execute = mysqli_query($conn, $sqlad);
   header('Location: admin.php');
 }
 function approve(){
   $conn = new mysqli('localhost', 'root', '', "shop");
   $id = $_POST['ID_comm'];
-  $sqlf = "UPDATE comments SET STATUS_com='1' WHERE ID_com= $id";
-  $result = $conn->query($sqlf);
+  $sqla = "UPDATE comments SET STATUS_com='1' WHERE ID_com= $id";
+  $Execute = mysqli_query($conn, $sqla);
   header('Location: admin.php');
   return $result;
 }
@@ -69,6 +69,7 @@ $(document).ready(function () {
             data = { 'action': clickBtnValue };
         $.post(ajaxurl, data, function (response) {
             // Response div goes here.
+            url: 'admin.php/approve()',
             alert("action performed successfully");
         });
     });
