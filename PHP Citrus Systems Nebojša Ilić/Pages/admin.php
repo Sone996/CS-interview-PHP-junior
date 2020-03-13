@@ -29,7 +29,7 @@ if (
     if($row['STATUS_com']==0) {
     ?>
     <tr>
-      <th scope="row"><?php echo $row["ID_com"];?></th>
+      <th scope="row" name="id_com"><?php echo $row["ID_com"];?></th>
       <td><?php echo $row["USER"];?></td>
       <td><?php echo $row["MAIL"];?></td>
       <td><?php echo $row["COMMENT"];?></td>
@@ -48,40 +48,22 @@ if(isset($_POST["approve"])){
 if(isset($_POST["approve"])){
   delete();
 }
+
 ?>
 
 <?php 
 function delete(){
   $conn = new mysqli('localhost', 'root', '', "shop");
-  $id = $_POST['ID_comm'];
+  $id = $_POST['id_comm'];
   $sqld = "DELETE * FROM comments WHERE ID_com= $id";
   $Execute = mysqli_query($conn, $sqld);
   // header('Location: admin.php');
 }
 function approve(){
   $conn = new mysqli('localhost', 'root', '', "shop");
-  $id = $_POST['ID_comm'];
+  $id = $_POST['id_comm'];
   $sqla = "UPDATE comments SET STATUS_com='1' WHERE ID_com= $id";
   $Execute = mysqli_query($conn, $sqla);
   // header('Location: admin.php');
-  return $result;
 }
 ?>
-
-
-<!-- function new_comment(){ 
-      $conn = new mysqli('localhost', 'root', '', "shop");
-      $name = $_POST['name'];
-      $mail = $_POST['mail'];
-      $comment = $_POST['comment'];
-      $status = 0;
-      if (!empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['comment'])) {
-        $sqlf = "INSERT INTO comments SET USER='$name', MAIL='$mail', COMMENT='$comment', STATUS_com='$status'";
-        // $result = $conn->query($sqlf);
-        $Execute = mysqli_query($conn, $sqlf);
-        // header('Location: main.php');
-        // return $result;
-      } else {
-        echo '<div class="alert alert-warning" role="alert">Please fill all fields!</div>';
-      }
-} -->
