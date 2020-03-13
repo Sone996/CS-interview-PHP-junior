@@ -26,15 +26,15 @@ if (
   </thead>
   <tbody>
   <?php while($row = $result1->fetch_assoc()) {
-    if($row['STATUS']==0) {
+    if($row['STATUS_com']==0) {
     ?>
     <tr>
       <th scope="row"><?php echo $row["ID_com"];?></th>
       <td><?php echo $row["USER"];?></td>
       <td><?php echo $row["MAIL"];?></td>
       <td>@mdo</td>
-      <th scope="col"><button type="button" class="btn btn-success">Approve</button></th>
-      <th scope="col"><button type="button" class="btn btn-danger">Delete</button></th>
+      <th scope="col"><input class="button btn btn-primary" type="submit" name="approve" value="Approve"></th>
+      <th scope="col"><input class="button btn btn-danger" type="submit" name="delete" value="Delete"></th>
     </tr>
   <?php } } ?>
   </tbody>
@@ -42,3 +42,35 @@ if (
 <?php require '../Components/footer.php';?>
 
 
+<?php 
+function delete(){
+  $conn = new mysqli('localhost', 'root', '', "shop");
+  $id = $_POST['ID_comm'];
+  $sqlf = "DELETE FROM comments WHERE ID_com= $id";
+  $result = $conn->query($sqlf);
+  header('Location: admin.php');
+}
+function approve(){
+  $conn = new mysqli('localhost', 'root', '', "shop");
+  $id = $_POST['ID_comm'];
+  $sqlf = "UPDATE comments SET STATUS_com='1' WHERE ID_com= $id";
+  $result = $conn->query($sqlf);
+  header('Location: admin.php');
+  return $result;
+}
+?>
+
+
+<script>
+$(document).ready(function () {
+    $('.button').click(function () {
+        var clickBtnValue = $(this).val();
+        var ajaxurl = 'admin.php',
+            data = { 'action': clickBtnValue };
+        $.post(ajaxurl, data, function (response) {
+            // Response div goes here.
+            alert("action performed successfully");
+        });
+    });
+});
+</script>

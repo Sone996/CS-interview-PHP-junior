@@ -27,25 +27,10 @@ function Login_Attempt($UserName, $Password) {
         @session_start();
         $_SESSION['ID_admin'] = true;
         echo "Success";
-        // return null;
     } else {
         echo "Failed";
         return null;
     }
 }
-function Message() {
-    if (isset($_SESSION["ErrorMesage"])) {
-        $output = htmlentities($_SESSION["ErrorMesage"]);
-        $_SESSION["ErrorMesage"] = null;
-        return $output;
-    }
-}
 
-function SuccessMessage() {
-    if (isset($_SESSION["SuccessMessage"])) {
-        $output = htmlentities($_SESSION["SuccessMessage"]);
-        $_SESSION["SuccessMessage"] = null;
-        return $output;
-    }
-}
 ?>

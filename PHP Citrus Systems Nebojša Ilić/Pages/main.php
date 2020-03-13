@@ -40,7 +40,7 @@ $num_cell = 4;
 		<h2>Comments</h2>
 	</div>
     <?php while($row = $result1->fetch_assoc()) {
-        if($row['STATUS']==1) {
+        if($row['STATUS_com']==1) {
         ?>
 	<hr>
 	<div class="row comment">
@@ -49,7 +49,6 @@ $num_cell = 4;
 	    </div>    
 	    <p><?php echo $row['COMMENT'];?> </p>
     </div>
-
     <?php } }?>
     </div>
 
